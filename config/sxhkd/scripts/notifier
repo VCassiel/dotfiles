@@ -1,0 +1,37 @@
+#!/usr/bin/env sh
+#----------------
+#  NOTIFIER
+#----------------
+# -> Caps Lock
+# -> OBS Recording
+# -> Touchpad
+
+# :: Functions
+
+notif_caps(){
+    sleep 0.2 && if [ "$(xset q | grep Caps | awk '{print $4}')" = 'on' ]; then dunstify -a System -t 1200 -h string:x-dunst-stack-tag:caps "Caps Lock Enabled"; else dunstify -a System -t 1200 -h string:x-dunst-stack-tag:caps "Caps Lock Disabled"; fi
+}
+
+notif_obs(){
+    sleep 1 && if [ "$(pgrep obs | wc -l)" = "2" ]; then dunstify -a 'OBS Studio' -t 1200 -h string:x-dunst-stack-tag:obs "Recording Started"; elif [ "$(pgrep obs | wc -l)" = "1" ]; then dunstify -a 'OBS Studio' -t 1200 -h string:x-dunst-stack-tag:obs "Recording Stopped"; fi
+}
+
+notif_tp_locked(){
+    dunstify -a System -t 1200 -h string:x-dunst-stack-tag:touchpad "Touchpad" "Locked"
+}
+
+notif_tp_unlocked(){
+    dunstify -a System -t 1200 -h string:x-dunst-stack-tag:touchpad "Touchpad" "Unlocked"
+}
+
+# :: Main
+
+while getopts ":cot" option; do
+    case $option in
+        c) notif_caps;;
+        o) notif_obs;;
+        l) notif_tp_locked;;
+        u) notif_tp_unlocked;;
+        \?) exit 1;;
+    esac
+done

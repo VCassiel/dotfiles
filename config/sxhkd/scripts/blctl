@@ -1,0 +1,27 @@
+#!/usr/bin/env sh
+#----------------
+#  BLCTL
+#----------------
+# -> Increase Backlight
+# -> Decrease Backlight
+
+
+# :: Functions
+
+bl_up(){
+    xbacklight -inc 5 && dunstify -a System -t 1000 -h string:x-dunst-stack-tag:backlight -h int:value:$(xbacklight -get) "Backlight: $(xbacklight -get)%" 
+}
+
+bl_down(){
+    xbacklight -dec 5 && dunstify -a System -t 1000 -h string:x-dunst-stack-tag:backlight -h int:value:$(xbacklight -get) "Backlight: $(xbacklight -get)%" 
+}
+
+# :: Main
+
+while getopts ":udt" option; do
+    case $option in
+        u) bl_up;;
+        d) bl_down;;
+        \?) exit 1
+    esac
+done

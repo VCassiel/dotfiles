@@ -1,0 +1,153 @@
+/*
+   ██████╗  ██████╗ ███████╗██╗
+   ██╔══██╗██╔═══██╗██╔════╝██║
+   ██████╔╝██║   ██║█████╗  ██║
+   ██╔══██╗██║   ██║██╔══╝  ██║
+   ██║  ██║╚██████╔╝██║     ██║
+   ╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝
+*/                           
+
+/*
+* Credits to: Adityia Shakya @ https://archcraft.io
+*/
+
+
+/*
+*----------------
+*   GENERAL
+*----------------
+*/
+
+configuration {
+    font:                   "Roboto Bold 11";
+    show-icons:             true;
+    display-drun:           "";
+    display-calc:           "";
+    display-filebrowser:    "";
+    modi:                   [ drun ];
+    drun-display-format:    "{name}";
+    drun-match-fields:      "name,generic";
+    cycle:                  true;
+    disable-history:        false;
+    fullscreen:             false;
+    hide-scrollbar:         true;
+    sidebar-mode:           false;
+}
+
+@theme "/dev/null"
+
+/*
+*----------------
+*   COLORS
+*----------------
+*/
+
+@import "~/.config/colors/spice/rofi.rasi"
+
+/*
+*----------------
+*   PROPERTIES
+*----------------
+*/
+
+// •• Geometry
+
+window {
+    transparency:           "real";
+    background-color:       @background;
+    text-color:             @foreground;
+    border:                 0% 0% 0% 0%;
+    border-color:           @border;
+    border-radius:          0px;
+    width:                  45%;
+    location:               center;
+    x-offset:               0;
+    y-offset:               380;
+}
+
+prompt {
+    enabled:                true;
+    padding:                0.1% 1% 0% 0.1%;
+    background-color:       @background-alt;
+    text-color:             @foreground;
+    font:                   "Symbols Nerd Font 13";
+}
+
+entry {
+    background-color:       @background-alt;
+    text-color:             @foreground;
+    placeholder-color:      @foreground;
+    expand:                 true;
+    horizontal-align:       0;
+    padding:                0.10% 0% 0% 0%;
+    blink:                  true;
+}
+
+inputbar {
+    children:               [ prompt, entry ];
+    background-color:       @background-bar;
+    text-color:             @foreground;
+    expand:                 false;
+    border:                 0% 0% 0% 0%;
+    border-radius:          8px;
+    margin:                 0% 0% 0% 0%;
+    padding:                1.2%;
+}
+
+listview {
+    background-color:       @background-alt;
+    columns:                3;
+    lines:                  3;
+    spacing:                0%;
+    cycle:                  false;
+    dynamic:                true;
+    layout:                 vertical;
+}
+
+mainbox {
+    background-color:       @background-alt;
+    border:                 0% 0% 0% 0%;
+    border-radius:          0% 0% 0% 0%;
+    // children:               [ listview, inputbar ];
+    children:               [ inputbar, listview ];
+    spacing:                2%;
+    padding:                2% 1% 2% 1%;
+}
+
+element {
+    background-color:       @background-alt;
+    text-color:             @foreground;
+    orienation:             vertical;
+    border-radius:          0%;
+    padding:                2% 0% 2% 0.2%;
+}
+
+element-icon {
+    background-color: 				@background-alt;
+    text-color:       				inherit;
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+    size:                           42px;
+    border:                         0px;
+}
+
+element-text {
+    background-color: 				@background-alt;
+    text-color:       				inherit;
+    expand:                         true;
+    horizontal-align:               0;
+    vertical-align:                 0.5;
+    margin:                         0.3% 0.3% 0.3% 0.3%;
+}
+
+element selected {
+    background-color:               @background-bar;
+    text-color:                     @highlight;
+	border:							0% 0% 0% 0%;
+    border-radius:                  8px;
+}
+
+
+/*
+ * vim: ft=scss
+ */

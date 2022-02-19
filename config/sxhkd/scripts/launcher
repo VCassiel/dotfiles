@@ -1,0 +1,31 @@
+#!/usr/bin/env sh
+#----------------
+#  LAUNCHER
+#----------------
+# -> Rofi Drun
+# -> Rofi Calc
+
+# :: Functions
+
+rofi_drun(){
+    rofi -no-lazy-grab -show drun &> /dev/null
+}
+
+rofi_calc(){
+    rofi -show calc -modi calc -no-show-match -no-sort -no-persist-history -no-unicode -calc-command "echo -n '{result}' | xclip -selection clipboard && dunstify -a Calculator -t 2500 'Result Copied: {result}'"
+}
+
+rofi_files(){
+    rofi -no-lazy-grab -show filebrowser &> /dev/null
+}
+
+# :: Main
+
+while getopts ":dcf" option; do
+    case $option in
+        d) rofi_drun;;
+        c) rofi_calc;;
+        f) rofi_files;;
+        \?) exit 1;;
+    esac
+done

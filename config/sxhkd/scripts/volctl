@@ -1,0 +1,32 @@
+#!/usr/bin/env sh
+#----------------
+#  VOLCTL
+#----------------
+# -> Increase Volume
+# -> Decrease Volume
+# -> Toggle Audio
+
+# :: Functions
+
+vol_up(){
+    pamixer -i 5 && dunstify -a System -t 1000 -h string:x-dunst-stack-tag:volume -h int:value:$(pamixer --get-volume) "Volume: $(pamixer --get-volume)%" 
+}
+
+vol_down(){
+    pamixer -d 5 && dunstify -a System -t 1000 -h string:x-dunst-stack-tag:volume -h int:value:$(pamixer --get-volume) "Volume: $(pamixer --get-volume)%"
+}
+
+vol_tog(){
+    pamixer -t && if pamixer --get-mute; then dunstify -a System -t 1000 -h string:x-dunst-stack-tag:volume "Audio Muted"; else dunstify -a System -t 1000 -h string:x-dunst-stack-tag:volume "Audio Unmuted"; fi
+}
+
+# :: Main
+
+while getopts ":udt" option; do
+    case $option in
+        u) vol_up;;
+        d) vol_down;;
+        t) vol_tog;;
+        \?) exit 1
+    esac
+done

@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=Skeuos-Vinifera-Dark
+Comment=Skeuos-Vinifera-Dark theme"
+Encoding=UTF-8
+
+
+[X-GNOME-Metatheme]
+GtkTheme=Skeuos-Vinifera-Dark
+MetacityTheme=Skeuos-Vinifera-Dark
+IconTheme=Flat-Remix-Vinifera-Dark
+CursorTheme=Adwaita
+ButtonLayout=:minimize,maximize,close

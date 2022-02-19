@@ -1,0 +1,76 @@
+/*
+*----------------
+*   ROFI :: BAR
+*----------------
+*/
+
+
+configuration {
+    disable-history:                false;
+	sidebar-mode: 					false;
+}
+
+@import "~/.config/colors/spice/rofi.rasi"
+
+element-text, element-icon {
+    background-color: inherit;
+    text-color:       inherit;
+}
+
+* {
+    background-color:               @background;
+    text-color:                     @foreground;
+}
+
+window {
+    transparency:                   "real";
+    border-radius:                  0px;
+    location:                       north;
+    x-offset:                       749px;
+    y-offset:                       35px;
+    width:                          400px;
+}
+
+listview {
+    columns:                        5;
+    lines:                          1;
+    margin:                         5px;
+    spacing:                        5px;
+    cycle:                          false;
+    layout:                         vertical;
+    dynamic:                        true;
+}
+
+mainbox {
+    background-color:               @background;
+    children:                       [ listview ];
+}
+
+element {
+    background-color:               @accent;
+    text-color:                     @background;
+    orientation:                    vertical;
+    border-radius:                  0px;
+}
+
+element-text {
+    font:			                "Symbols Nerd Font 15";
+    expand:                         false;
+    horizontal-align:               0.5;
+    vertical-align:                 -0.5;
+    margin:                         5px 10px 10px 10px;
+    padding:                        5px 10px 10px 10px;
+}
+
+element selected {
+    background-color:               @highlight;
+    text-color:                     @background;
+    border:                  		1px;
+    border-radius:                  0px;
+    border-color:                  	@background;
+}
+
+
+/*
+ * vim: ft=scss
+ */

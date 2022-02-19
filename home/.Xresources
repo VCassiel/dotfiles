@@ -1,0 +1,45 @@
+! •• Fontconfg
+
+Xft.autohint: 0
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintslight
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+
+! •• Colors
+
+#include "colors/vinifera/xresources"
+
+! Black
+*.color0:       BLK
+*.color8:       BLK
+! Red
+*.color1:       RED
+*.color9:       RED
+! Green
+*.color2:       GRE
+*.color10:      GRE
+! Yellow
+*.color3:       YEL
+*.color11:      YEL
+! Blue
+*.color4:       BLU
+*.color12:      BLU
+! Magenta
+*.color5:       MAG
+*.color13:      MAG
+! Cyan
+*.color6:       CYA
+*.color14:      CYA
+! White
+*.color7:       WHI
+*.color15:      WHI
+! Special
+*.background:   BG
+*.foreground:   FG
+
+! •• Application Colors
+
+Sxiv.foreground: HL
+Sxiv.background: BG

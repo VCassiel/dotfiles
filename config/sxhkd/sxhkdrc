@@ -1,0 +1,228 @@
+#   ███████╗██╗  ██╗██╗  ██╗██╗  ██╗██████╗ 
+#   ██╔════╝╚██╗██╔╝██║  ██║██║ ██╔╝██╔══██╗
+#   ███████╗ ╚███╔╝ ███████║█████╔╝ ██║  ██║
+#   ╚════██║ ██╔██╗ ██╔══██║██╔═██╗ ██║  ██║
+#   ███████║██╔╝ ██╗██║  ██║██║  ██╗██████╔╝
+#   ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ 
+#   Shared Configuration  
+
+
+#-------------------------
+#   SYSTEM CONTROL
+#-------------------------
+
+# •• Shutdown or Reboot
+super + {_,shift + }Delete
+    systemctl {reboot,poweroff}
+
+# •• Lock Screen
+super + shift + Return
+	betterlockscreen -l dimblur
+
+# •• Audio Control [Script]
+XF86AudioRaiseVolume
+    ~/.config/sxhkd/scripts/volctl -u
+XF86AudioLowerVolume
+    ~/.config/sxhkd/scripts/volctl -d
+XF86AudioMute
+    ~/.config/sxhkd/scripts/volctl -t
+
+# •• Brightness Control [Script]
+XF86MonBrightnessUp
+    ~/.config/sxhkd/scripts/blctl -u
+XF86MonBrightnessDown
+    ~/.config/sxhkd/scripts/blctl -d
+
+#-------------------------
+#   ENVIRONMENT CONTROL
+#-------------------------
+
+# •• Quit BSPWM
+super + alt + q
+    bspc quit
+
+# •• Restart BSPWM [Script]
+super + alt + r
+    ~/.config/sxhkd/scripts/envctl -b
+
+# •• Reload SXHKD [Script]
+super + Escape
+    ~/.config/sxhkd/scripts/envctl -h
+
+# •• Reload Dunst [Script]
+super + shift + Tab
+    ~/.config/sxhkd/scripts/envctl -d
+
+# •• Toggle Dunst [Script]
+super + Tab
+    ~/.config/sxhkd/scripts/envctl -n
+
+#-------------------------
+#   APPLICATIONS
+#-------------------------
+
+# •• On-Demand Float
+super + o
+    bspc rule -a \* -o state=floating rectangle=$(slop)
+
+# •• Launch Terminal
+super + grave
+	kitty	
+super + shift + grave
+    tdrop -am -w 1896 -y 35 -x 11 kitty
+alt + grave
+    bspc rule -a kitty -o state=floating rectangle=$(slop) && kitty
+
+# •• Launch Browser
+super + b 
+	firefox
+
+# •• Launch File Manager (Nemo & Ranger)
+super + {_,shift + }e 
+	{nemo,kitty -e ranger} 1> /dev/null
+
+# •• Launch Rofi Drun [Script]
+super + r
+    ~/.config/sxhkd/scripts/launcher -d
+
+# •• Launch Rofi Calc [Script]
+super + shift + r
+    ~/.config/sxhkd/scripts/launcher -c
+
+# •• Launch Rofi Filebrowser [Script]
+super + shift + f
+    ~/.config/sxhkd/scripts/launcher -f
+
+# •• Screenshot [Script] [Workaround]
+{_,shift + } Print
+    ~/.config/sxhkd/scripts/capture -{s,k}
+{_,shift + } XF86Tools
+    ~/.config/sxhkd/scripts/capture -{s,k}
+
+# •• Color Picker [Script]
+super + slash
+    ~/.config/sxhkd/scripts/capture -c
+
+# •• Sticky Notes [Script]
+super + n
+    kitty --class=StickyNotes -e ~/.config/sxhkd/scripts/nvimnotes 
+
+#-------------------------
+#   BSPWM: GENERAL
+#-------------------------
+
+# •• Close or Kill a Window
+super + {_,shift + }q
+	bspc node -{c,k}
+
+# •• Alternate Layout: Tiled and Monocle
+super + space
+	bspc desktop -l next
+
+# •• Balance Windows
+super + g
+    bspc node @/ -B
+
+# •• Set the Window State
+super + f
+	bspc node -t '~fullscreen'
+
+super + t
+	bspc node -t '~tiled'
+
+super + y
+	bspc node -t '~pseudo_tiled'
+
+super + u
+	bspc node -t '~floating'
+
+# •• Toggle Sticky Flag
+super + {_,shift + }m
+    bspc node -g sticky={on,off}
+
+# •• Set the Node Layer
+super + c
+    bspc node -l below
+
+super + v
+    bspc node -l above
+
+#-------------------------
+#   BSPWM: FOCUS/SWAP/SEND
+#-------------------------
+
+# •• Focus Node in Given Direction
+super + {_,shift + }{a,s,w,d}
+	bspc node -{f,s} {west,south,north,east}
+
+# •• Focus or Send to Given Desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+# •• Focus Node Sequentially
+super + {Left,Right}
+    bspc node -f {prev,next}
+super + {z,x}
+    bspc node -f {prev,next}
+
+#-------------------------
+#   BSPWM: PRESELECT
+#-------------------------
+
+# •• Preselect Direction
+super + ctrl + {a,s,w,d}
+	bspc node -p {west,south,north,east}
+
+# •• Preselect Ratio
+super + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+# •• Cancel Preselection
+super + ctrl + q
+	bspc node -p cancel
+
+#-------------------------
+#   BSPWM: RECEPTACLES
+#-------------------------
+
+# •• Create Receptacle
+super + ctrl + {h,j,k,l}
+    bspc node --presel-dir {west,south,north,east} -i
+
+# •• Insert Focused Window into Receptacle
+super + ctrl + Return
+    bspc node $(bspc query -N -n focused) -n $(bspc query -N -n .leaf.\!window -d focused) 
+
+#-------------------------
+#   BSPWM: MOVE/RESIZE
+#-------------------------
+
+# •• Expand a Window
+super + alt + {h,j,k,l}
+	bspc node -z {left -30 0,bottom 0 30,top 0 -30,right 30 0}
+
+# •• Contract a Window
+super + alt + shift + {h,j,k,l}
+	bspc node -z {right -30 0,top 0 30,bottom 0 -30,left 30 0}
+
+# •• Move a Floating Window
+super + {h,j,k,l}
+	bspc node -v {-55 0,0 55,0 -55,55 0}
+
+#-------------------------
+#   NOTIFIERS [Script]
+#-------------------------
+
+# •• Notify Capslock Status
+Caps_Lock
+    ~/.config/sxhkd/scripts/notifier -c
+
+# •• Notify OBS Recording
+F11
+    ~/.config/sxhkd/scripts/notifier -o
+
+# •• Notify Touchpad Status [L]
+XF86TouchpadOff
+    ~/.config/sxhkd/scripts/notifier -l
+XF86TouchpadOn
+    ~/.config/sxhkd/scripts/notifier -u

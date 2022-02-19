@@ -1,0 +1,34 @@
+#------------------
+#   BSPWM :: RULES
+#------------------
+
+
+# •• Environment Rules
+
+bspc rule -a firefox:Toolkit state=floating sticky=on focus=off
+
+bspc rule -a StickyNotes state=floating center=on sticky=on rectangle=600x500+0+0
+
+bspc rule -a Sxiv state=floating
+
+bspc rule -a mpv state=fullscreen
+
+bspc rule -a Yad state=floating center=on
+
+
+# •• Application Rules
+
+bspc rule -a 'Gimp-2.10' desktop='5'
+
+bspc rule -a Steam state=floating
+
+bspc rule -a Blueman-manager state=floating center=on rectangle=800x600+0+0
+
+bspc rule -a File-roller state=floating center=on
+
+bspc rule -a SimpleScreenRecorder state=floating center=on
+
+bspc rule -a TelegramDesktop state=floating center=on
+
+
+# vim: ft=sh

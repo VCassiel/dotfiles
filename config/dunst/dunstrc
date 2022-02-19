@@ -1,0 +1,316 @@
+#   ██████╗ ██╗   ██╗███╗   ██╗███████╗████████╗
+#   ██╔══██╗██║   ██║████╗  ██║██╔════╝╚══██╔══╝
+#   ██║  ██║██║   ██║██╔██╗ ██║███████╗   ██║   
+#   ██║  ██║██║   ██║██║╚██╗██║╚════██║   ██║   
+#   ██████╔╝╚██████╔╝██║ ╚████║███████║   ██║   
+#   ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝╚══════╝   ╚═╝   
+
+[global]
+
+#----------------------
+#   DISPLAY
+#----------------------
+
+monitor = 0
+
+follow = mouse
+
+per_monitor_dpi = false
+
+#----------------------
+#   GENERAL PROPERTIES
+#----------------------
+
+show_age_threshold = 120
+
+stack_duplicates = true
+hide_duplicate_count = false
+
+show_indicators = no
+indicate_hidden = yes
+
+title = Dunst
+class = Dunst
+
+browser = /usr/bin/firefox
+
+always_run_script = true
+
+startup_notification = false
+
+verbosity = mesg
+
+force_xinerama = false
+
+idle_threshold = 0
+
+#----------------------
+#   FRAME PROPERTIES
+#----------------------
+
+width = 280
+height = 250
+origin = top-right
+offset = 11x46
+notification_limit= 5
+
+corner_radius = 0
+
+shrink = no
+
+transparency = 0
+
+notification_height = 0
+separator_height = 3
+separator_color = "#00000000"
+line_height = 1
+frame_width = 0
+
+padding = 12
+horizontal_padding = 15
+
+
+sort = yes
+
+progress_bar = true
+progress_bar_height = 9
+progress_bar_frame_width = 0
+
+#----------------------
+#   FORMAT
+#----------------------
+
+markup = full
+
+format = "<b>%a</b> | %s\n%b"
+
+alignment = center
+
+word_wrap = yes
+
+ellipsize = end
+
+ignore_newline = no
+
+font = Roboto Medium 12
+
+#----------------------
+#   ICONS
+#----------------------
+
+icon_position = left
+
+min_icon_size = 48
+max_icon_size = 64
+
+icon_path = /usr/share/icons/dunst/system:/usr/share/icons/dunst/apps
+
+#----------------------
+#   HISTORY
+#----------------------
+
+sticky_history = yes
+
+history_length = 20
+
+#----------------------
+#   MOUSE INTERACTION
+#----------------------
+
+mouse_left_click = do_action
+mouse_middle_click = close_all
+mouse_right_click = close_current
+
+#----------------------
+#   URGENCY LEVELS
+#----------------------
+
+[urgency_low]
+background = "#1e1c22e6"
+foreground = "#f4f2f2"
+highlight = "#ffe2d1"
+timeout = 3
+icon = /usr/share/icons/dunst/system/info.svg
+
+[urgency_normal]
+background = "#1e1c22e6"
+foreground = "#f4f2f2"
+highlight = "#ffe2d1"
+timeout = 4
+icon = /usr/share/icons/dunst/system/info.svg
+
+[urgency_critical]
+background = "#1e1c22e6"
+foreground = "#f4f2f2"
+highlight = "#ffe2d1"
+timeout = 5
+icon = /usr/share/icons/dunst/system/urgent.svg
+
+#----------------------
+#   CUSTOM RULES
+#----------------------
+
+# •• System General
+
+[system]
+appname = System
+new_icon = /usr/share/icons/dunst/system/system.svg
+
+[theme]
+appname = Theme
+new_icon = /usr/share/icons/dunst/system/theme.svg
+
+[bspwm]
+appname = System
+summary = bspwm
+new_icon = /usr/share/icons/dunst/system/bspwm.svg
+
+[sxhkd]
+appname = System
+summary = sxhkd
+new_icon = /usr/share/icons/dunst/system/sxhkd.svg
+
+[dunst_rel]
+appname = System
+summary = dunst
+body = "Restarted"
+new_icon = /usr/share/icons/dunst/system/dunst_restart.svg
+
+[welcome]
+appname = System
+summary = Welcome
+format = "<b>%s,\n%b</b>"
+new_icon = /usr/share/icons/dunst/misc/face
+[updates_yes]
+appname = System
+summary = Updates
+body = Available*
+new_icon = /usr/share/icons/dunst/system/updates_yes.svg
+[updates_no]
+appname = System
+summary = Updates
+body = "All packages synced"
+new_icon = /usr/share/icons/dunst/system/updates_no.svg
+
+[dnd_on]
+appname = System
+summary = dunst
+body = "DND Enabled"
+new_icon = /usr/share/icons/dunst/system/dnd_on.svg
+[dnd_off]
+appname = System
+summary = dunst
+body = "DND Disabled"
+new_icon = /usr/share/icons/dunst/system/dnd_off.svg
+
+[bluetooth]
+appname = blueman
+new_icon = /usr/share/icons/dunst/system/bluetooth_on.svg
+[bluetooth_conn]
+appname = blueman
+body = *Connected
+new_icon = /usr/share/icons/dunst/system/bluetooth_paired.svg
+[bluetooth_disc]
+appname = blueman
+body = *Disconnected
+new_icon = /usr/share/icons/dunst/system/bluetooth_off.svg
+
+# •• Volume & Backlight
+
+[volume0]
+appname = System
+summary = Volume: [0-9]*
+new_icon = /usr/share/icons/dunst/system/volume1.svg
+[volume1]
+appname = System
+summary = Volume: [0-3][0-9]*
+new_icon = /usr/share/icons/dunst/system/volume1.svg
+[volume2]
+appname = System
+summary = Volume: [4-6][0-9]*
+new_icon = /usr/share/icons/dunst/system/volume2.svg
+[volume3]
+appname = System
+summary = Volume: [7-9][0-9]*
+new_icon = /usr/share/icons/dunst/system/volume3.svg
+[volume4]
+appname = System
+summary = Volume: 1[0-9][0-9]*
+new_icon = /usr/share/icons/dunst/system/volume3.svg
+
+[sound_off]
+appname = System
+summary = "Audio Muted"
+new_icon = /usr/share/icons/dunst/system/sound_off.svg
+[sound_on]
+appname = System
+summary = "Audio Unmuted"
+new_icon = /usr/share/icons/dunst/system/volume3.svg
+
+[backlight0]
+appname = System
+summary = Backlight: [0-9]*
+new_icon = /usr/share/icons/dunst/system/backlight1.svg
+[backlight1]
+appname = System
+summary = Backlight: [0-3][0-9]*
+new_icon = /usr/share/icons/dunst/system/backlight1.svg
+[backlight2]
+appname = System
+summary = Backlight: [4-6][0-9]*
+new_icon = /usr/share/icons/dunst/system/backlight2.svg
+[backlight3]
+appname = System
+summary = Backlight: [7-9][0-9]*
+new_icon = /usr/share/icons/dunst/system/backlight3.svg
+[backlight4]
+appname = System
+summary = Backlight: 1[0-9][0-9]*
+new_icon = /usr/share/icons/dunst/system/backlight3.svg
+
+# •• Keyboard Functions
+
+[capslock_on]
+appname = System
+summary = "Caps Lock Enabled"
+new_icon = /usr/share/icons/dunst/system/caps_on.svg
+[capslock_off]
+appname = System
+summary = "Caps Lock Disabled"
+new_icon = /usr/share/icons/dunst/system/caps_off.svg
+
+# •• Applications
+
+[color_picker]
+appname = "Color Picker"
+format = "<b>%a</b>\n%s\n%b"
+new_icon = /tmp/preview.png
+
+[flameshot]
+appname = Screenshot
+format = "<b>%a</b>\n%s"
+timeout = 3
+new_icon = /tmp/latest.png
+
+[rofi_calc]
+appname = Calculator
+format = "<b>%a</b>\n%s"
+new_icon = /usr/share/icons/dunst/system/roficalc.svg
+
+[firefox]
+desktop_entry = Firefox
+new_icon = /usr/share/icons/dunst/apps/firefox.svg
+
+[record_on]
+appname = "OBS Studio"
+summary = "Recording Started"
+format = "<b>%a</b>\n%s"
+new_icon = /usr/share/icons/dunst/system/record_on.svg
+[record_off]
+appname = "OBS Studio"
+summary = "Recording Stopped"
+format = "<b>%a</b>\n%s"
+new_icon = /usr/share/icons/dunst/system/record_off.svg
+
+
+# vim: ft=cfg

@@ -1,0 +1,21 @@
+/*
+*--------------------
+*   VINIFERA :: ROFI 
+*--------------------
+*/
+
+
+* {
+    background:             #191924ff;
+    background-alt:         #00000000;
+    background-bar:         #7880b525;
+    foreground:             #e7e6f5;
+    highlight:              #9790f5;
+    accent:                 #d0cdf4;
+}
+
+
+/*
+ * vim: ft=css
+ */
+

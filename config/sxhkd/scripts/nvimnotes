@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+#------------------
+#  NVIMNOTES
+#------------------
+# Credits to: Calin Leafshade @ https://youtube.com
+# -> Launch script for the Sticky Notes keybind
+
+
+note="$HOME/Documents/Notes/note-$(date +%d-%m-%Y).md"
+
+if [ ! -f $note ]; then
+  echo "# Notes for $(date +%d-%m-%Y)" > $note
+fi
+
+nvim -c "norm Go" \
+  -c "norm Go## $(date +%H:%M)" \
+  -c "norm G2o" \
+  -c "norm zz" \
+  -c "startinsert" $note

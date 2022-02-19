@@ -1,0 +1,78 @@
+/*
+*-------------------
+*   ROFI :: WINDOWS
+*-------------------
+*/
+
+
+configuration {
+    modi:                   [ window ];
+    window-format:          " {w}  ··  {t}";
+    window-thumbnail:       true;
+    show-icons:             false;
+    cycle:                  false;
+}
+
+@import "~/.config/colors/spice/rofi.rasi"
+
+element-text, element-icon {
+    background-color: inherit;
+    text-color:       inherit;
+}
+
+* {
+    background-color:               @background-alt;
+    text-color:                     @foreground;
+}
+
+window {
+    transparency:                   "real";
+    border-radius:                  0px;
+    location:                       north;
+    x-offset:                       315px;
+    y-offset:                       35px;
+    width:                          420px;
+}
+
+listview {
+    columns:                        1;
+    lines:                          5;
+    margin:                         5px;
+    spacing:                        5px;
+    cycle:                          false;
+    layout:                         vertical;
+    dynamic:                        true;
+}
+
+mainbox {
+    background-color:               @background-alt;
+    children:                       [ listview ];
+}
+
+element {
+    background-color:               @accent;
+    text-color:                     @background;
+    orientation:                    vertical;
+    border-radius:                  0px;
+}
+
+element-text {
+    font:                           "Roboto 14";
+    expand:                         true;
+    horizontal-align:               0;
+    vertical-align:                 0;
+    margin:                         15px 18px 15px 18px;
+}
+
+element selected {
+    background-color:               @highlight;
+    text-color:                     @background;
+    border:                  		1px;
+    border-radius:                  0px;
+    border-color:                  	@background;
+}
+
+
+/*
+ * vim: ft=scss
+ */

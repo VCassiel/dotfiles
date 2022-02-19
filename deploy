@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+#------------------
+#  DEPLOY (WIP)
+#------------------
+# Dotfile deployment script
+
+# :: Functions
+
+
+confcheck(){
+    declare -a conflist=$(/bin/ls ./config)    
+
+    for item in $conflist
+    do
+        if [ -e ~/.config/$item ]
+        then
+            echo -e "\e[1;31mWarning! $item is already in ~/.config\e[0m"
+        fi
+    done
+
+    declare -a homelist=$(/bin/ls ./home)    
+
+    for item in $homelist
+    do
+        if [ -e $HOME/$item ]
+        then
+            echo -e "\e[1;31mWarning! $item is already in $HOME\e[0m"
+        fi
+    done
+}
+
+deployconfirm(){
+    echo -e "\e[1;33m Are you sure you want to deploy configuration files? \e[0m"
+    echo -e "\e[1;33m This will overwrite existing files.\n \e[0m"
+    read -p "Answer [y/N]: " answer
+    case $answer in
+        [yY][eE][sS]|[yY])
+            echo -e "\e[1;34m Deploying in 5.. \e[0m" && sleep 1
+            echo -e "\e[1;34m Deploying in 4.. \e[0m" && sleep 1
+            echo -e "\e[1;34m Deploying in 3.. \e[0m" && sleep 1
+            echo -e "\e[1;34m Deploying in 2.. \e[0m" && sleep 1
+            echo -e "\e[1;34m Deploying in 1.. \e[0m" && sleep 1;;
+        [nN][oO][nN]|[nN])
+            exit 1;;
+        *)
+            echo -e "\e[1;33m Invalid input. Exiting... \e[0m"
+            exit 1;;
+    esac
+}
+
+link_conf(){
+    echo -e "\e[1;34m Deploying into ~/.config... \e[0m"
+
+    ln -sfvr ./config/* $HOME/.config/ 1> /dev/null
+}
+
+link_home(){
+    echo -e "\e[1;34m Deploying home-based configurations... \e[0m"
+
+    ln -sfvr ./home/* $HOME/ 1> /dev/null
+}
+
+deploy_finish(){
+    echo -e "\e[1;32m Done. Reboot now?\n \e[0m"
+    read -p "Answer [Y/n]: " answer
+    case $answer in
+        [yY][eE][sS]|[yY])
+            systemctl reboot;;
+        [nN][oO][nN]|[nN])
+            exit 0;;
+        *)
+            systemctl reboot;;
+    esac
+}
+
+# :: Exec
+
+confcheck && deployconfirm && link_conf && link_home && deploy_finish
+

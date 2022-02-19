@@ -1,0 +1,21 @@
+/*
+*-----------------
+*   SPICE :: ROFI 
+*-----------------
+*/
+
+
+* {
+    background:             #1e1c22ff;
+    background-alt:         #00000000;
+    background-bar:         #6d657b30;
+    foreground:             #f4f2f2;
+    highlight:              #ffb49a;
+    accent:                 #ffe2d1;
+}
+
+
+/*
+ * vim: ft=css
+ */
+

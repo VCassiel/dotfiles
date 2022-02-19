@@ -1,0 +1,38 @@
+#!/usr/bin/env sh
+#----------------
+#  ENVCTL
+#----------------
+# -> Reload BSPWM
+# -> Reload SXHKD
+# -> Reload Dunst
+# -> Toggle Dunst
+
+# :: Functions
+
+rel_bspwm(){
+	bspc wm -r && sleep 3 && dunstify -a System "bspwm" "Window Manager Restarted"
+}
+
+rel_sxhkd(){
+	pkill -USR1 -x sxhkd && dunstify -a System -t 1500 "sxhkd" "Hotkeys Updated"
+}
+
+rel_dunst(){
+	pkill dunst && sleep 1 && dunstify -a System -t 1500 "dunst" "Restarted"
+}
+
+tog_dunst(){
+    if [ $(dunstctl is-paused) = 'true' ]; then dunstctl close-all && dunstify -a System -t 1500 -h string:x-dunst-stack-tag:dnd "dunst" "DND Disabled" && dunstctl set-paused toggle; else dunstify -a System -t 1500 -h string:x-dunst-stack-tag:dnd "dunst" "DND Enabled" && sleep 1.5 && dunstctl set-paused toggle; fi
+}
+
+# :: Main
+
+while getopts ":bhdn" option; do
+    case $option in
+        b) rel_bspwm;;
+        h) rel_sxhkd;;
+        d) rel_dunst;;
+        n) tog_dunst;;
+        \?) exit 1;;
+    esac
+done

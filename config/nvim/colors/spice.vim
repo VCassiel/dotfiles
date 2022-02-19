@@ -1,0 +1,1 @@
+../../colors/spice/spice.vim

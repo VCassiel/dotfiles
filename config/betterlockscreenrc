@@ -1,0 +1,26 @@
+# •• General Settings
+
+display_on=0
+font="roboto"
+fontsize=32
+locktext='Enter Password To Unlock'
+lock_timeout=20
+
+# •• Themeing
+
+insidecolor=00000000
+ringcolor=1e1c22ee
+keyhlcolor=ffbd9bff
+bshlcolor=ffe2d188
+separatorcolor=00000000
+insidevercolor=00000000
+insidewrongcolor=00000000
+ringvercolor=1e1c22ff
+ringwrongcolor=ee6352ff
+verifcolor=f4f2f2ff
+timecolor=f4f2f2ff
+datecolor=f4f2f2ff
+loginbox=00000066
+layoutcolor=00000000
+
+# vim: ft=cfg

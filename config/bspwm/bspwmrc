@@ -1,0 +1,88 @@
+#!/bin/sh
+#   ██████╗ ███████╗██████╗ ██╗    ██╗███╗   ███╗
+#   ██╔══██╗██╔════╝██╔══██╗██║    ██║████╗ ████║
+#   ██████╔╝███████╗██████╔╝██║ █╗ ██║██╔████╔██║
+#   ██╔══██╗╚════██║██╔═══╝ ██║███╗██║██║╚██╔╝██║
+#   ██████╔╝███████║██║     ╚███╔███╔╝██║ ╚═╝ ██║
+#   ╚═════╝ ╚══════╝╚═╝      ╚══╝╚══╝ ╚═╝     ╚═╝
+#   Desktop Configuration
+
+#----------------------
+#   HOTKEY DAEMON INIT
+#----------------------
+
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+#----------------------
+#   GENERAL SETTINGS
+#----------------------
+
+bspc monitor -d 1 2 3 4 5
+
+bspc config border_width    1
+bspc config window_gap      11
+bspc config top_padding		0
+bspc config bottom_padding	0
+bspc config left_padding	0
+bspc config right_padding 	0
+bspc config split_ratio     0.50
+
+bspc config gapless_monocle             true
+bspc config borderless_monocle          true
+bspc config single_monocle              true
+bspc config remove_disabled_monitors	true
+bspc config remove_unplugged_monitors	true
+bspc config removal_adjustment          true
+
+#----------------------
+#   POINTER BEHAVIOUR
+#----------------------
+
+refrate=$(printf "%.0f" $(xrandr -q | grep '*' | awk {'print $2'} | cut -f1 -d'*'))
+
+bspc config pointer_modifier	    mod4
+bspc config pointer_action1	        move
+bspc config pointer_action2	        resize_side
+bspc config pointer_action3	        resize_corner
+bspc config click_to_focus	        none
+bspc config focus_follows_pointer	true
+bspc config pointer_follows_focus   false
+bspc config pointer_motion_interval $((1000/$refrate+1))
+
+#----------------------
+#   COLORS & RULES
+#----------------------
+
+. $HOME/.config/colors/spice/bspwm
+. $HOME/.config/bspwm/rules
+
+#----------------------
+#   AUTOEXEC
+#----------------------
+
+# •• Keymap
+exec setxkbmap us &
+
+# •• Cursor Sensitivity Persistency
+$HOME/.config/bspwm/scripts/sens.sh
+
+# •• Wallpaper Persistency
+xwallpaper --clear && xwallpaper --center $HOME/.cache/wallpaper
+
+# •• Status Bar Init
+$HOME/.config/polybar/scripts/launch.sh
+
+# •• Compositor Init
+pgrep -x picom > /dev/null || picom --experimental-backends &
+
+# •• Notification Daemon Init
+pgrep -x dunst > /dev/null || dunst &
+
+# •• Polkit Agent Init
+pgrep -x lxpolkit > /dev/null || /usr/bin/lxpolkit &
+
+# •• Update Notifier
+sleep 2 && $HOME/.config/bspwm/scripts/updates.sh &
+
+# •• Disable Screen Timeout
+xset -dpms s off &

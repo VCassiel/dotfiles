@@ -1,0 +1,36 @@
+#!/usr/bin/env sh
+#----------------
+#  CAPTURE
+#----------------
+# -> Screenshot
+# -> Color Picker
+
+# :: Functions
+
+cap_scr(){
+	flameshot gui -r -p $HOME/Pictures/Screenshots > /tmp/latest.png && dunstify -a Screenshot -h string:x-dunst-stack-tag:screenshot "Captured"
+}
+
+cap_scr_keep(){
+    flameshot gui -r -p $HOME/Pictures/Screenshots > /tmp/latest.png && sxiv -b /tmp/latest.png
+}
+
+cap_col(){
+    prev_file="/tmp/preview.png"
+    window_size="64x64"
+    clipped="xclip -o -selection clipboard"
+    xcolor | xclip -selection clipboard
+    convert -size "$window_size" xc:$(${clipped}) -flatten $prev_file
+    dunstify -a "Color Picker" -t 2500 "Hex Value Copied" "$(${clipped})"
+}
+
+# :: Main
+
+while getopts ":skc" option; do
+    case $option in
+        s) cap_scr;;
+        k) cap_scr_keep;;
+        c) cap_col;;
+        \?) exit 1
+    esac
+done
