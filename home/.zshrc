@@ -46,6 +46,7 @@ alias kitrc='nvim $HOME/.config/kitty/kitty.conf'
 alias vimrc='nvim $HOME/.config/nvim/init.vim'
 alias comprc='nvim $HOME/.config/picom/picom.conf'
 alias dunrc='nvim $HOME/.config/dunst/dunstrc'
+alias rofrc='nvim $HOME/.config/rofi/config.rasi'
 
 # •• Apps
 
