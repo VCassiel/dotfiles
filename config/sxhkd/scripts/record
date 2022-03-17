@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+#----------------
+#  RECORD
+#----------------
+# -> Hotkey Wrapper for ffmpeg
+# TODO: Add automatic GPU detection and codec choice
+# TODO: Dynamic monitor focus through bspwm query
+# TODO: Native display framerate (bash substitution)
+# TODO: Native focused monitor resolution (bash substitution)
+# TODO: Attempt to tweak for better quality
+# TODO: Attempt to fix initial stuttering
+
+# :: Variables
+
+RESOLUTION="1920x1080"
+FPS="60"
+GOP="120"
+MONITOR=":0.0+0,0"
+OUTPUT="$HOME/Videos/$(date +%s).mp4"
+ENCODER="h264_nvenc"    # Nvidia Encoder
+# ENCODER="h264_amf"    # AMD Encoder
+# ENCODER="libx264"     # CPU Encoder
+
+# :: Functions
+
+rec_hq(){
+    if [ ! $(pgrep ffmpeg) ]; then
+        dunstify -a 'Recording' -t 1200 -h string:x-dunst-stack-tag:recording "Started"
+        ffmpeg -loglevel error \
+        -f x11grab -s "$RESOLUTION" -r "$FPS" -thread_queue_size 1024 -i "$MONITOR" \
+        -f pulse -ac 1 -ar 48000 -thread_queue_size 1024 -i default \
+        -g "$GOP" -c:v "$ENCODER" -preset p7 -qp 10 -s "$RESOLUTION" \
+        -pix_fmt yuv420p -probesize 125M \
+        -c:a libmp3lame -b:a 128k "$OUTPUT" || \
+        dunstify -a 'Recording' -t 1200 -h string:x-dunst-stack-tag:recording "Stopped"
+    else
+        kill -s INT $(pidof ffmpeg)
+    fi
+}
+
+rec_comp(){
+    if [ ! $(pgrep ffmpeg) ]; then
+        dunstify -a 'Recording' -t 1200 -h string:x-dunst-stack-tag:recording "Started (Compressed)"
+        ffmpeg -loglevel error \
+        -f x11grab -s "$RESOLUTION" -r "$FPS" -thread_queue_size 1024 -i "$MONITOR" \
+        -f pulse -ac 1 -ar 48000 -thread_queue_size 1024 -i default \
+        -g "$GOP" -c:v "$ENCODER" -preset p3 -qp 20 -s "$RESOLUTION" \
+        -pix_fmt yuv420p -probesize 125M \
+        -c:a libmp3lame -b:a 128k "$OUTPUT" || \
+        dunstify -a 'Recording' -t 1200 -h string:x-dunst-stack-tag:recording "Stopped"
+    else
+        kill -s INT $(pidof ffmpeg)
+    fi
+}
+
+# :: Main
+
+while getopts ":qc" option; do
+    case $option in
+        q) rec_hq;;
+        c) rec_comp;;
+        \?) exit 1
+    esac
+done

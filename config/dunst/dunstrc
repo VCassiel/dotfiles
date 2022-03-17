@@ -302,11 +302,22 @@ desktop_entry = Firefox
 new_icon = /usr/share/icons/dunst/apps/firefox.svg
 
 [record_on]
+appname = "Recording"
+summary = Started*
+format = "<b>%a</b>\n%s"
+new_icon = /usr/share/icons/dunst/system/record_on.svg
+[record_off]
+appname = "Recording"
+summary = Stopped*
+format = "<b>%a</b>\n%s"
+new_icon = /usr/share/icons/dunst/system/record_off.svg
+
+[record_obs_on]
 appname = "OBS Studio"
 summary = "Recording Started"
 format = "<b>%a</b>\n%s"
 new_icon = /usr/share/icons/dunst/system/record_on.svg
-[record_off]
+[record_obs_off]
 appname = "OBS Studio"
 summary = "Recording Stopped"
 format = "<b>%a</b>\n%s"

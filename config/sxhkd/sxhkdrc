@@ -99,6 +99,12 @@ super + shift + f
 {_,shift + } XF86Tools
     ~/.config/sxhkd/scripts/capture -{s,k}
 
+# •• Record [Script] [Workaround]
+ctrl + {_,shift + } Print
+    ~/.config/sxhkd/scripts/record -{q,c}
+ctrl + {_,shift + } XF86Tools
+    ~/.config/sxhkd/scripts/record -{q,c}
+
 # •• Color Picker [Script]
 super + slash
     ~/.config/sxhkd/scripts/capture -c

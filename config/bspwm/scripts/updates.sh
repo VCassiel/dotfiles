@@ -2,7 +2,7 @@
 
 
 username=$(getent passwd | grep "$(whoami)" | cut -f 5 -d:)
-updates=$(paru -Qu 2> /dev/null | wc -l)
+updates=$(checkupdates 2> /dev/null | wc -l)
 minutes=$(uptime | awk '{print $3}')
 timeunit=$(uptime | awk '{print $4}' | cut -c '1-3')
 

@@ -16,6 +16,10 @@ notif_obs(){
     sleep 1 && if [ "$(pgrep obs | wc -l)" = "2" ]; then dunstify -a 'OBS Studio' -t 1200 -h string:x-dunst-stack-tag:obs "Recording Started"; elif [ "$(pgrep obs | wc -l)" = "1" ]; then dunstify -a 'OBS Studio' -t 1200 -h string:x-dunst-stack-tag:obs "Recording Stopped"; fi
 }
 
+notif_rec(){
+    if [ $(pgrep ffmpeg) ]; then dunstify -a 'Recording' -t 1200 -h string:x-dunst-stack-tag:recording "Started"; else dunstify -a 'Recording' -t 1200 -h string:x-dunst-stack-tag:recording "Stopped"; fi
+}
+
 notif_tp_locked(){
     dunstify -a System -t 1200 -h string:x-dunst-stack-tag:touchpad "Touchpad" "Locked"
 }
@@ -26,10 +30,11 @@ notif_tp_unlocked(){
 
 # :: Main
 
-while getopts ":cot" option; do
+while getopts ":corlu" option; do
     case $option in
         c) notif_caps;;
         o) notif_obs;;
+        r) notif_rec;;
         l) notif_tp_locked;;
         u) notif_tp_unlocked;;
         \?) exit 1;;
