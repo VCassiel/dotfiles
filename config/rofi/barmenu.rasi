@@ -10,7 +10,7 @@ configuration {
 	sidebar-mode: 					false;
 }
 
-@import "~/.config/colors/spice/rofi.rasi"
+@import "~/.config/colors/catppuccin/rofi.rasi"
 
 element-text, element-icon {
     background-color: inherit;
@@ -18,7 +18,7 @@ element-text, element-icon {
 }
 
 * {
-    background-color:               @background;
+    background-color:               @background-alt;
     text-color:                     @foreground;
 }
 
@@ -26,8 +26,8 @@ window {
     transparency:                   "real";
     border-radius:                  0px;
     location:                       north;
-    x-offset:                       749px;
-    y-offset:                       35px;
+    x-offset:                       757px;
+    y-offset:                       43px;
     width:                          400px;
 }
 
@@ -42,7 +42,7 @@ listview {
 }
 
 mainbox {
-    background-color:               @background;
+    background-color:               @background-alt;
     children:                       [ listview ];
 }
 

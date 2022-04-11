@@ -4,7 +4,7 @@
 #----------------
 # Credits to Tam Carre @ https://github.com/tam-carre
 
-. $HOME/.config/colors/spice/polybar.ini # imports the colorscheme used by polybar
+. $HOME/.config/colors/catppuccin/polybar.ini # imports the colorscheme used by polybar
 
 active_text_color=$BG
 active_bg=$HL
@@ -18,8 +18,8 @@ separator="·"
 show="window_class" # options: window_title, window_class, window_classname
 forbidden_classes="Polybar Conky Gmrun"
 
-char_limit=10
-max_windows=5
+char_limit=12
+max_windows=8
 char_case="lower" # normal, upper, lower
 add_spaces="true"
 wm_border_width=1 # setting this might be required for accurate resize position

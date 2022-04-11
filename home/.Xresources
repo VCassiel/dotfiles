@@ -9,7 +9,7 @@ Xft.rgba: rgb
 
 ! •• Colors
 
-#include "colors/vinifera/xresources"
+#include "colors/catppuccin/xresources"
 
 ! Black
 *.color0:       BLK

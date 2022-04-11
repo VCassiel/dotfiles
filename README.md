@@ -42,6 +42,8 @@
 
 - **redshift** | Night-light Service
 
+- **btop** | TUI System Monitor
+
 - **fontconfig** | Font Settings
 
 - **colors** | Colorschemes

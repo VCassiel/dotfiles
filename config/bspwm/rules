@@ -30,5 +30,7 @@ bspc rule -a SimpleScreenRecorder state=floating center=on
 
 bspc rule -a TelegramDesktop state=floating center=on
 
+bspc rule -a steam_app_1182480 state=floating center=on # Fixes Origin launcher
+
 
 # vim: ft=sh

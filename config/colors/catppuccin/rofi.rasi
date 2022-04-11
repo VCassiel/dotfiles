@@ -1,0 +1,21 @@
+/*
+*----------------------
+*   CATPPUCCIN :: ROFI 
+*----------------------
+*/
+
+
+* {
+    background:             #1A1826ff;
+    background-alt:         #00000000;
+    background-bar:         #57526830;
+    foreground:             #D9E0EE;
+    highlight:              #F2CDCD;
+    accent:                 #F5E0DC;
+}
+
+
+/*
+ * vim: ft=css
+ */
+

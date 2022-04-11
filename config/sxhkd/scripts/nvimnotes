@@ -5,15 +5,32 @@
 # Credits to: Calin Leafshade @ https://youtube.com
 # -> Launch script for the Sticky Notes keybind
 
+# :: Functions
 
 note="$HOME/Documents/Notes/note-$(date +%d-%m-%Y).md"
 
-if [ ! -f $note ]; then
-  echo "# Notes for $(date +%d-%m-%Y)" > $note
-fi
+create_note(){
+    if [ ! -f $note ]; then
+        echo "# Notes for $(date +%d-%m-%Y)" > $note
+    fi
 
-nvim -c "norm Go" \
-  -c "norm Go## $(date +%H:%M)" \
-  -c "norm G2o" \
-  -c "norm zz" \
-  -c "startinsert" $note
+    nvim -c "norm Go" \
+        -c "norm Go## $(date +%H:%M)" \
+        -c "norm G2o" \
+        -c "norm zz" \
+        -c "startinsert" $note
+}
+
+view_notes(){
+    nvim "$HOME/Documents/Notes/"
+}
+
+# :: Main
+
+while getopts ":cv" option; do
+    case $option in
+        c) create_note;;
+        v) view_notes;;
+        \?) exit 1;;
+    esac
+done

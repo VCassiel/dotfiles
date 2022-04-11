@@ -42,7 +42,7 @@ configuration {
 *----------------
 */
 
-@import "~/.config/colors/spice/rofi.rasi"
+@import "~/.config/colors/catppuccin/rofi.rasi"
 
 /*
 *----------------

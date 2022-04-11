@@ -110,8 +110,8 @@ super + slash
     ~/.config/sxhkd/scripts/capture -c
 
 # •• Sticky Notes [Script]
-super + n
-    kitty --class=StickyNotes -e ~/.config/sxhkd/scripts/nvimnotes 
+super + {_,shift + } n
+    kitty --class=StickyNotes -e ~/.config/sxhkd/scripts/nvimnotes -{c,v}
 
 #-------------------------
 #   BSPWM: GENERAL

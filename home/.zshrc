@@ -57,17 +57,12 @@ alias ovpn="sudo openvpn"
 # •• Package Management
 
 alias mirs='sudo reflector --verbose --latest 200 --age 24 --score 75 --sort rate --fastest 6 --save /etc/pacman.d/mirrorlist'
-alias stdgrade='sudo pacman -Syyu'
-alias aurgrade='paru -Sua' 
-alias pacss='pacman -Ss'
-alias pacsi='sudo pacman -S'
-alias pacqs='sudo pacman -Qe'
-alias pacqa='sudo pacman -Qm'
+alias pacss='aura -Ss'
+alias pacsi='sudo aura -S'
+alias pacqs='sudo aura -Qe'
+alias pacqa='sudo aura -Qm'
+alias pacrs='sudo aura -Rsnu'
 alias pacclr='sudo pacman -Scc'
-alias pacrs='sudo pacman -Rns'
-# alias pacsi='sudo aura -A'
-# alias pacss='aura -Ss'
-# alias pacrs='sudo aura -Rsnu'
 
 # •• Git
 
@@ -93,6 +88,10 @@ export SUDO_PROMPT=$(echo -e "\033[31mProvide your password: \033[0m")
 HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE="~/.cache/zsh/history"
+
+# •• FZF Catppuccin
+
+export FZF_DEFAULT_OPTS='--color=bg+:#302D41,spinner:#F8BD96,hl:#F28FAD --color=fg:#D9E0EE,header:#F28FAD,info:#DDB6F2,pointer:#F8BD96 --color=marker:#F8BD96,fg+:#F2CDCD,prompt:#DDB6F2,hl+:#F28FAD'
 
 #------------------
 #   FEATURES

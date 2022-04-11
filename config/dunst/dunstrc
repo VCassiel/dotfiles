@@ -51,7 +51,7 @@ idle_threshold = 0
 width = 280
 height = 250
 origin = top-right
-offset = 11x46
+offset = 8x46
 notification_limit= 5
 
 corner_radius = 0
@@ -126,23 +126,23 @@ mouse_right_click = close_current
 #----------------------
 
 [urgency_low]
-background = "#1e1c22e6"
-foreground = "#f4f2f2"
-highlight = "#ffe2d1"
+background = "#1E1E2Ee6"
+foreground = "#D9E0EE"
+highlight = "#F5E0DC"
 timeout = 3
 icon = /usr/share/icons/dunst/system/info.svg
 
 [urgency_normal]
-background = "#1e1c22e6"
-foreground = "#f4f2f2"
-highlight = "#ffe2d1"
+background = "#1E1E2Ee6"
+foreground = "#D9E0EE"
+highlight = "#F5E0DC"
 timeout = 4
 icon = /usr/share/icons/dunst/system/info.svg
 
 [urgency_critical]
-background = "#1e1c22e6"
-foreground = "#f4f2f2"
-highlight = "#ffe2d1"
+background = "#1E1E2Ee6"
+foreground = "#D9E0EE"
+highlight = "#F5E0DC"
 timeout = 5
 icon = /usr/share/icons/dunst/system/urgent.svg
 
@@ -286,11 +286,24 @@ appname = "Color Picker"
 format = "<b>%a</b>\n%s\n%b"
 new_icon = /tmp/preview.png
 
-[flameshot]
-appname = Screenshot
-format = "<b>%a</b>\n%s"
-timeout = 3
-new_icon = /tmp/latest.png
+[flameshot_copied]
+appname = flameshot
+body = "Capture saved to clipboard."
+format = "<b>%a</b>\n%b"
+timeout = 2
+new_icon = /usr/share/icons/dunst/system/copy.svg
+[flameshot_saved]
+appname = flameshot
+body = "Capture saved as*"
+format = "<b>%a</b>\n%b"
+timeout = 2
+new_icon = /usr/share/icons/dunst/system/save.svg
+[flameshot_aborted]
+appname = flameshot
+body = "Screenshot aborted."
+format = "<b>%a</b>\n%b"
+timeout = 2
+new_icon = /usr/share/icons/dunst/system/cancel.svg
 
 [rofi_calc]
 appname = Calculator
@@ -311,17 +324,5 @@ appname = "Recording"
 summary = Stopped*
 format = "<b>%a</b>\n%s"
 new_icon = /usr/share/icons/dunst/system/record_off.svg
-
-[record_obs_on]
-appname = "OBS Studio"
-summary = "Recording Started"
-format = "<b>%a</b>\n%s"
-new_icon = /usr/share/icons/dunst/system/record_on.svg
-[record_obs_off]
-appname = "OBS Studio"
-summary = "Recording Stopped"
-format = "<b>%a</b>\n%s"
-new_icon = /usr/share/icons/dunst/system/record_off.svg
-
 
 # vim: ft=cfg

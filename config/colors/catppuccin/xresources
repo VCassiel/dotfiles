@@ -1,0 +1,16 @@
+! Special
+#define BG #1E1E2E
+#define FG #D9E0EE
+#define HL #F2CDCD
+
+! Pallete
+#define BLK #575268 
+#define RED #F28FAD
+#define GRE #ABE9B3
+#define YEL #F8BD96
+#define BLU #96CDFB
+#define MAG #DDB6F2
+#define CYA #B5E8E0
+#define WHI #F5E0DC
+
+! vim: ft=xdefaults

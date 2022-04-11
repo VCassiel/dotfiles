@@ -53,7 +53,7 @@ let g:ale_completion_enabled = 1
 "------------------------
 
 set guifont=Fira\ Code:h16
-colorscheme spice
+colorscheme catppuccin
 
 "------------------------
 "   AIRLINE THEME

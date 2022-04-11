@@ -7,12 +7,13 @@
 
 # :: Functions
 
+
 cap_scr(){
-	flameshot gui -r -p $HOME/Pictures/Screenshots > /tmp/latest.png && dunstify -a Screenshot -h string:x-dunst-stack-tag:screenshot "Captured"
+	flameshot gui
 }
 
 cap_scr_keep(){
-    flameshot gui -r -p $HOME/Pictures/Screenshots > /tmp/latest.png && sxiv -b /tmp/latest.png
+    flameshot gui -r > /tmp/latest.png && sxiv -b /tmp/latest.png
 }
 
 cap_col(){

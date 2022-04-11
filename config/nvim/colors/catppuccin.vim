@@ -1,0 +1,1 @@
+../../colors/catppuccin/catppuccin.vim
