@@ -64,7 +64,7 @@ notification_height = 0
 separator_height = 3
 separator_color = "#00000000"
 line_height = 1
-frame_width = 0
+frame_width = 1
 
 padding = 12
 horizontal_padding = 15
@@ -126,23 +126,23 @@ mouse_right_click = close_current
 #----------------------
 
 [urgency_low]
-background = "#1E1E2Ee6"
-foreground = "#D9E0EE"
-highlight = "#F5E0DC"
+background = "#131020e6"
+foreground = "#F5E0DC"
+highlight = "#F2CDCD"
 timeout = 3
 icon = /usr/share/icons/dunst/system/info.svg
 
 [urgency_normal]
-background = "#1E1E2Ee6"
-foreground = "#D9E0EE"
-highlight = "#F5E0DC"
+background = "#131020e6"
+foreground = "#F5E0DC"
+highlight = "#F2CDCD"
 timeout = 4
 icon = /usr/share/icons/dunst/system/info.svg
 
 [urgency_critical]
-background = "#1E1E2Ee6"
-foreground = "#D9E0EE"
-highlight = "#F5E0DC"
+background = "#131020e6"
+foreground = "#F5E0DC"
+highlight = "#F2CDCD"
 timeout = 5
 icon = /usr/share/icons/dunst/system/urgent.svg
 
