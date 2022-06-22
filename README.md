@@ -2,6 +2,7 @@
     <h1>Dotfiles</h1>
     <p>
         Personal Arch Linux dotfiles
+        (Deprecated in favour of macOS dotfiles)
     </p>
 </div>
 
@@ -67,7 +68,7 @@ Dotfiles are deployed as symlinks into the ~/.config and $HOME directory as nece
 
 1. Clone this repo
 ```
-git clone https://github.com/VCassiel/dotfiles
+git clone https://github.com/v-cassiel/dotfiles-legacy
 ```
 
 2. Run the deployment script (**WIP!**) from within the dotfiles directory
@@ -81,5 +82,4 @@ chmod +x deploy
 
 #### Notes
 
-- The deployment script is still WIP and may not function as expected
-- The colorschemes are also WIP
+- Development is discontinued, configs will not updated
