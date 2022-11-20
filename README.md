@@ -68,18 +68,18 @@ Dotfiles are deployed as symlinks into the ~/.config and $HOME directory as nece
 
 1. Clone this repo
 ```
-git clone https://github.com/v-cassiel/dotfiles-legacy
+git clone https://github.com/cassiel6v/dotfiles-legacy
 ```
 
-2. Run the deployment script (**WIP!**) from within the dotfiles directory
+2. Run the deployment script from within the dotfiles directory
 ```
-cd dotfiles/
-chmod +x deploy
-./deploy
+cd dotfiles-legacy/
+chmod +x deploy.sh
+./deploy.sh
 ```
 
 ---
 
 #### Notes
 
-- Development is discontinued, configs will not updated
+- Development is discontinued, configs will no longer be updated

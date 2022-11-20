@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 #------------------
-#  DEPLOY (WIP)
+#  DEPLOY
 #------------------
 # Dotfile deployment script
 
 # :: Functions
-
 
 confcheck(){
     declare -a conflist=$(/bin/ls ./config)    
@@ -76,4 +75,3 @@ deploy_finish(){
 # :: Exec
 
 confcheck && deployconfirm && link_conf && link_home && deploy_finish
-
