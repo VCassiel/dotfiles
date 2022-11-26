@@ -10,8 +10,7 @@
 
 |                Terminal              |                 Desktop                  |
 |:------------------------------------:|:------------------------------------:|
-| ![screen1](./screenshots/term1.png) | ![screen2](./screenshots/desk1.png) |
-| ![screen3](./screenshots/term2.png) | ![screen4](./screenshots/desk2.png) |
+| ![screen1](./screenshots/term.png) | ![screen2](./screenshots/desk.png) |
 
 ---
 
